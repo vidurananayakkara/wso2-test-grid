@@ -21,25 +21,28 @@ package org.wso2.carbon.testgrid.common;
 import java.util.List;
 
 /**
- *  Defines a model object for a created deployment.
+ * Defines a model object for a created deployment.
+ *
+ * @since 1.0.0
  */
 public class Deployment {
 
-    private String name;
     private List<Host> hosts;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    /**
+     * Returns the list of hosts related to the deployment.
+     *
+     * @return list of hosts related to the deployment
+     */
     public List<Host> getHosts() {
         return hosts;
     }
 
+    /**
+     * Sets the list of hosts related to the deployment.
+     *
+     * @param hosts list of hosts related to the deployment
+     */
     public void setHosts(List<Host> hosts) {
         this.hosts = hosts;
     }

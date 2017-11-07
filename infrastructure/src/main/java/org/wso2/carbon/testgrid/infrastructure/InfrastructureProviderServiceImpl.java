@@ -44,6 +44,11 @@ public class InfrastructureProviderServiceImpl implements InfrastructureProvider
     }
 
     @Override
+    public boolean authenticate() throws TestGridInfrastructureException {
+        return false;
+    }
+
+    @Override
     public Deployment createInfrastructure(Infrastructure infrastructure, String infraRepoDir) throws TestGridInfrastructureException {
 //        String testPlanLocation = infrastructure.getHome() +"/test-grid-is-resources/DeploymentPatterns/" + infrastructure.getDeploymentPattern();
 //

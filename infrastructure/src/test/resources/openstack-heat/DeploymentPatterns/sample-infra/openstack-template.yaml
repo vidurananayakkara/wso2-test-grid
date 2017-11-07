@@ -1,0 +1,32 @@
+--- 
+description: "Sample template to deploy a single compute instance"
+heat_template_version: "2015-04-30"
+outputs: 
+  instance_ip: 
+    description: "The IP address of the deployed instance"
+    value: 
+      get_attr: 
+        - TGOSCon1
+        - first_address
+parameters: 
+  properties: 
+    flavor: 
+      label: m1.small
+      type: string
+    image_id: 
+      label: ubuntu-16.04
+      type: string
+    key_name: 
+      label: ViduraN-Ubuntu
+      type: string
+  type: "OS::Nova::Server"
+resources: 
+  TGOSCon1: 
+    properties: 
+      flavor: 
+        get_param: flavor
+      image: 
+        get_param: image_id
+      key_name: 
+        get_param: key_name
+    type: "OS::Nova::Server"

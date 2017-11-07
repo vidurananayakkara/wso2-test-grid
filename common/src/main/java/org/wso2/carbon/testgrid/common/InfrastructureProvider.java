@@ -23,6 +23,8 @@ import org.wso2.carbon.testgrid.common.exception.TestGridInfrastructureException
 
 /**
  * This Interface has to be implemented by the InfrastructureProviders like AWS, GCC, OpenStack.
+ *
+ * @since 1.0.0
  */
 public interface InfrastructureProvider {
 
@@ -31,21 +33,29 @@ public interface InfrastructureProvider {
      *
      * @return A String indicating the name of the provider.
      */
-     String getProviderName();
+    String getProviderName();
 
     /**
      * This method returns whether the provider can handle the requested infrastructure.
      *
      * @return A boolean indicating whether can handle or not.
      */
-     boolean canHandle(Infrastructure infrastructure);
+    boolean canHandle(Infrastructure infrastructure);
+
+    /**
+     * Authenticates to the IAAS.
+     *
+     * @return {@code true} if authenticated, {@code false} otherwise
+     * @throws TestGridInfrastructureException thrown when error on authentication to the IAAS
+     */
+    boolean authenticate() throws TestGridInfrastructureException;
 
     /**
      * This method creates the necessary infrastructure using the provided configuration.
      *
      * @param infrastructure An instance of a Infrastructure which includes the details of the infrastructure
      *                       that should be created.
-     * @param infraRepoDir - Location of the cloned repository related to infrastructure.
+     * @param infraRepoDir   - Location of the cloned repository related to infrastructure.
      * @return Deployment -  Deployment object including the created host, ip details
      * @throws TestGridInfrastructureException - thrown when error occurs in the infrastructure creation process.
      */
@@ -54,10 +64,10 @@ public interface InfrastructureProvider {
     /**
      * This method executes commands needed to remove the infrastructure.
      *
-     * @param deployment An instance of a Deployment which Infrastructure should be removed.
+     * @param deployment   An instance of a Deployment which Infrastructure should be removed.
      * @param infraRepoDir - Location of the cloned repository related to infrastructure.
      * @return boolean status of the operation
-     * @throws TestGridInfrastructureException  - thrown when error occurs in the infrastructure destroy process.
+     * @throws TestGridInfrastructureException - thrown when error occurs in the infrastructure destroy process.
      */
     boolean removeInfrastructure(Deployment deployment, String infraRepoDir) throws TestGridInfrastructureException;
 
