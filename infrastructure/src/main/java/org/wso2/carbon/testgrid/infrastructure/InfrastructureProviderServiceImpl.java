@@ -25,6 +25,8 @@ import org.wso2.carbon.testgrid.common.Infrastructure;
 import org.wso2.carbon.testgrid.common.InfrastructureProvider;
 import org.wso2.carbon.testgrid.common.exception.TestGridInfrastructureException;
 
+import java.io.IOException;
+
 /**
  * This class creates the infrastructure for running tests
  */
@@ -61,5 +63,10 @@ public class InfrastructureProviderServiceImpl implements InfrastructureProvider
 //            return true;
 //        }
         return false;
+    }
+
+    @Override
+    public void close() throws IOException {
+
     }
 }

@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.carbon.testgrid.reporting.util;
+package org.wso2.carbon.testgrid.common.util;
 
 /**
  * Utility class for obtaining environment variable values.
@@ -31,7 +31,7 @@ public class EnvironmentUtil {
      * @param systemVariableKey key of the system property or environment variable
      * @return system property value or environment variable value for the given key
      */
-    public static String getSystemVariableValue(String systemVariableKey) {
+        public static String getSystemVariableValue(String systemVariableKey) {
         String envVariableValue = System.getenv(systemVariableKey);
 
         return envVariableValue != null ? envVariableValue : System.getProperty(systemVariableKey);

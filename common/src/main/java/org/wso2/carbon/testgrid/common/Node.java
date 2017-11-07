@@ -27,6 +27,8 @@ import java.util.List;
  */
 public class Node {
 
+    private final long NODE_SPAWN_TIME_OUT_MILLIS = 30000;
+
     @Element(description = "defines the label of this node")
     private String label;
     @Element(description = "defines the list of open ports of this node")
@@ -39,6 +41,8 @@ public class Node {
     private NodeType nodeType;
     @Element(description = "defines the type of this node (i.e. t2.medium)")
     private String size;
+    @Element(description = "defines the timeout duration for spawning the node instance in cloud")
+    private long timeout = NODE_SPAWN_TIME_OUT_MILLIS;
 
     private enum NodeType {
         LB ("Load Balancer"),
@@ -101,5 +105,23 @@ public class Node {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    /**
+     * Returns the timeout duration for the node to get spawned in the cloud.
+     *
+     * @return timeout for spawning the node in milli-seconds
+     */
+    public long getTimeout() {
+        return timeout;
+    }
+
+    /**
+     * Sets the time out duration for spawning the node.
+     *
+     * @param timeout timeout for spawning the node in milli-seconds
+     */
+    public void setTimeout(long timeout) {
+        this.timeout = timeout;
     }
 }

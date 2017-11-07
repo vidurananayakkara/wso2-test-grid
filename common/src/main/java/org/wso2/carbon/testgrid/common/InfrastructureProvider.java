@@ -21,10 +21,14 @@ package org.wso2.carbon.testgrid.common;
 
 import org.wso2.carbon.testgrid.common.exception.TestGridInfrastructureException;
 
+import java.io.Closeable;
+
 /**
  * This Interface has to be implemented by the InfrastructureProviders like AWS, GCC, OpenStack.
+ *
+ * @since 1.0.0
  */
-public interface InfrastructureProvider {
+public interface InfrastructureProvider extends Closeable {
 
     /**
      * This method returns the provider name (AWS/GCP/Open Stack etc).
